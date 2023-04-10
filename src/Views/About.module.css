@@ -1,0 +1,68 @@
+.aboutcontainer{
+    display: flex;
+    width: 85%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 5, 130, 0.253) ;
+    border: 2px groove;
+    border-radius: 10px;
+    border-color: rgba(88, 62, 76, 0.418) ;
+    box-shadow: 4px 4px 4px 4px rgba(15, 0, 8, 0.397);
+    padding: 20px;
+    cursor: pointer;
+    margin: 10px;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.aboutCreator{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height:0;
+    background-color: rgba(129, 39, 129, 0.596);
+    border: 5px outset rgba(129, 39, 129, 0.596);
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 2px rgba(129, 39, 129, 0.596);
+    font-family: 'Delicious Handrawn',cursive;
+    font-size: 14px;
+    width: 100%;
+    top: 50%;
+    left: 50%;   
+    color:rgb(255, 255, 255);
+    -webkit-text-stroke: 2px rgba(255, 20, 145, 0.568);
+    text-shadow: 2px -3px 2.5px rgba(3, 3, 3, 0.836)
+}
+
+.parrafoAC{
+  font-size: 20px;
+  -webkit-text-stroke: 1px rgba(255, 20, 145, 0.568);
+  text-shadow: 2px -3px 2.5px rgba(3, 3, 3, 0.836)
+}
+
+.aboutApp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height:0;
+    background-color: rgba(129, 39, 129, 0.596);
+    border: 5px outset rgba(129, 39, 129, 0.596);
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 2px rgba(129, 39, 129, 0.596);
+    font-family: 'Delicious Handrawn',cursive;
+    font-size: 14px;
+    width: 100%;
+    top: 50%;
+    left: 50%;   
+    color:rgb(255, 255, 255);
+    -webkit-text-stroke: 2px rgba(255, 20, 145, 0.568);
+    text-shadow: 2px -3px 2.5px rgba(3, 3, 3, 0.836);
+    margin-top: 30px;
+}
+
+.parrafoAA{
+    font-size: 20px;
+    -webkit-text-stroke: 1px rgba(255, 20, 145, 0.568);
+    text-shadow: 2px -3px 2.5px rgba(3, 3, 3, 0.836)
+}

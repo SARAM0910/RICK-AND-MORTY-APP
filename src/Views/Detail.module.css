@@ -1,0 +1,77 @@
+
+*{
+    box-sizing: border-box;
+}
+
+.detailContainer{
+    display: flex;
+    width: 35%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 5, 130, 0.253) ;
+    border: 2px groove;
+    border-radius: 10px;
+    border-color: rgba(88, 62, 76, 0.418) ;
+    box-shadow: 4px 4px 4px 4px rgba(15, 0, 8, 0.397);
+    padding: 20px;
+    cursor: pointer;
+    margin-left:500px;
+}
+
+.imgDetailContainer{
+    position: relative;
+    /* // modifica en cualquier elemto que tenga posicion absoluta */
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px 3px rgba(131, 80, 107, 0.685);
+    
+}
+
+.imgDetail{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px groove;
+    border-color: rgba(131, 80, 107, 0.685) ;
+}
+
+.detailAtributes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height:0;
+    background-color: rgba(129, 39, 129, 0.596);
+    border: 5px outset rgba(129, 39, 129, 0.596);
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 2px rgba(129, 39, 129, 0.596);
+    font-family: 'Delicious Handrawn',cursive;
+    font-size: 15px;
+    width: 100%;
+    top: 50%;
+    left: 50%;   
+    color:rgb(255, 255, 255);
+    -webkit-text-stroke: 1.8px rgba(255, 20, 145, 0.568);
+    text-shadow: 2px -3px 2.5px rgba(3, 3, 3, 0.849)
+}
+
+.detailCharacterName{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(129, 39, 129, 0.596);
+    border: 5px outset rgba(129, 39, 129, 0.596);
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 2px rgba(129, 39, 129, 0.596);
+    font-family: 'Delicious Handrawn',cursive;
+    font-size: 19px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke: 2px rgba(255, 20, 145, 0.568);
+    text-shadow: 2px -3px 2.5px rgba(3, 3, 3, 0.849)
+}
