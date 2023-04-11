@@ -1,10 +1,10 @@
 import React from "react";
 import Form from "../components/Form";
 
-export default function landing () {
+export default function landing ({login}) {
     return(
         <div>
-            <Form/>
+            <Form login={login}/>
         </div>
     )
 }

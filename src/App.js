@@ -1,18 +1,42 @@
 import React from 'react';
 import "./App.css"
 import Nav from './components/Nav';
-import{useState} from 'react';
+import{useState,useEffect,} from 'react';
 import axios from "axios";
 import {Route,Routes} from 'react-router-dom'
 import About from './Views/About';
 import Detail from './Views/Detail';
 import Home from './Views/Home';
 import Form from './components/Form';
+import { useNavigate } from 'react-router-dom';
 
 function App () {
 
   const [input, setInput] = useState("");
   const [characters, setCharacters] = useState([]);
+  const [access,setAccess] = useState(false)
+  const username = 'ejemplo@gmail.com'
+  const password = 'ejemplo123'
+  const navigate = useNavigate();
+
+  // login
+
+  function login(userData) {
+    if (userData.password === password && userData.username === username) {
+       setAccess(true);
+       navigate('/home');
+    }
+ }
+
+ // logout
+
+ function logoutHandler() {
+  setAccess(false);
+  navigate("/");
+}
+ useEffect(() => {
+  !access && navigate('/');
+}, [access]);
 
   function changeHandler(e) {
     e.preventDefault();
@@ -92,9 +116,9 @@ function App () {
 
   return (
      <div className='app'>
-          < Nav onSearch={searchHandler} onChange={changeHandler} random={randomHandler} />
+          < Nav onSearch={searchHandler} onChange={changeHandler} random={randomHandler} logout={logoutHandler} />
           <Routes>
-            <Route path='/'element={<Form/>}/>
+            <Route path='/'element={<Form login = {login}/>}/>
             <Route path='/Home'element={<Home characters={characters} onClose={closeHandler} onClick={randomHandler} onChange={changeHandler} onSearch={searchHandler}/>}/>
             <Route path='/About' element={<About/>}/>
             <Route path='/Detail/:id' element={<Detail/>} />

@@ -13,7 +13,7 @@
     margin: 10px;
     margin-left: 250px;
     margin-top: 80px;
-    height: 650px;
+    height: 670px;
     width: 70%;
 }
 
@@ -90,4 +90,15 @@
 
 .loginButton:hover{
     background-color: rgba(128, 128, 128, 0.596);
+}
+
+.errors{
+    font-family: 'Delicious Handrawn',cursive;
+    font-weight: bold;
+    font-size: 23px;
+    color:white;
+    text-shadow:2.5px -5px 3px rgba(7, 7, 7, 0.589);
+    cursor: pointer;
+    -webkit-text-stroke: 2px rgba(10, 88, 40, 0.877);
+    margin-top: 5px;
 }

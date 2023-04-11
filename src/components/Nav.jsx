@@ -4,7 +4,7 @@ import logo from "../assets/Logo.png";
 import { Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 
-export default function Nav (){
+export default function Nav ({logout}){
 
         const location = useLocation();
         if (location.pathname === "/") {
@@ -19,6 +19,7 @@ export default function Nav (){
             <div className={style.linkContainer}>
              <Link className={style.link} id='home' to='/Home'>Home</Link>
              <Link className={style.link} to='/About'>About</Link>
+             <button className={style.buttonRandom} onClick={logout}>Logout</button>
             </div>
         </div>
     )
