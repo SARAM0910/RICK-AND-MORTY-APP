@@ -19,6 +19,7 @@ export default function Nav ({logout}){
             <div className={style.linkContainer}>
              <Link className={style.link} id='home' to='/Home'>Home</Link>
              <Link className={style.link} to='/About'>About</Link>
+             <Link className={style.link} to='/Favorites'>Favorites</Link>
              <button className={style.buttonRandom} onClick={logout}>Logout</button>
             </div>
         </div>

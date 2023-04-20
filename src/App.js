@@ -8,6 +8,7 @@ import About from './Views/About';
 import Detail from './Views/Detail';
 import Home from './Views/Home';
 import Form from './components/Form';
+import Favorites from './Views/Favorites'
 import { useNavigate } from 'react-router-dom';
 
 function App () {
@@ -122,6 +123,8 @@ function App () {
             <Route path='/Home'element={<Home characters={characters} onClose={closeHandler} onClick={randomHandler} onChange={changeHandler} onSearch={searchHandler}/>}/>
             <Route path='/About' element={<About/>}/>
             <Route path='/Detail/:id' element={<Detail/>} />
+            <Route path='/favorites' element={<Favorites/>} />
+
           </Routes>
       </div>
       
