@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import style from './Card.module.css';
 import { addCharacter,deleteCharacter} from '../redux/actions'
 import { useNavigate } from 'react-router-dom';
-import { connect, useDispatch } from 'react-redux';
+import { connect} from 'react-redux';
+import { useEffect } from 'react';
+
 <link rel="preconnect" href="https://fonts.googleapis.com"/>;
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>;
 <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet"/>;
@@ -11,19 +13,43 @@ import { connect, useDispatch } from 'react-redux';
 
  function Card(props) {  
    const navigate = useNavigate()
-   const {character, onClose} = props;
-   const dispactch = useDispatch();
+   const {character, onClose,addCharacter,deleteCharacter,myFavorites} = props;
+   const [isFav,setIsFav]=useState(false)
+  
 
    function navigateHandler (){
       navigate (`/Detail/${character.id}`)
    }
 
-  
+  function handleFavorite (data){
+   if (isFav){
+      deleteCharacter(data)
+      setIsFav(false)
+   }else{
+      addCharacter(data)
+      setIsFav (true)
+   }
    
+  }
+
+  useEffect(() => {
+   myFavorites.forEach((fav) => {
+      if (fav.id === character.id) {
+         setIsFav(true);
+      }
+   });
+}, [myFavorites]);
+
 
    return (
       <div className= {style.cardContainer}>
          <button className={style.closeButton} onClick={() => onClose(character.id)}>X</button>
+         {
+            isFav ? (
+               <button onClick={()=>handleFavorite (character.id)}>❤️</button>
+                 ) : (
+                 <button onClick={()=>handleFavorite (character)}>🤍</button> )
+         } 
          <h2 className={style.cardName}>Name: {character.name} </h2>
          <div className={style.imageContainer}>
          <img className={style.img} src = {character.image} alt={character.name} onClick={navigateHandler}/>
@@ -38,11 +64,18 @@ import { connect, useDispatch } from 'react-redux';
    )
 }
 
-const mapDispatchToProps = (dispactch)=>{
-   return{
-      addCharacter:(character)=> dispactch (addCharacter(character)),
-      deleteCharacter : (id) => dispactch(deleteCharacter(id))
-   }
-}
-
-export default connect (mapDispatchToProps,null)(Card)
+const mapDispatchToProps = (dispatch) => {
+   return {
+     addCharacter: (character) => dispatch(addCharacter(character)),
+ 
+     deleteCharacter: (id) => dispatch(deleteCharacter(id)),
+   };
+ };
+ 
+ const mapStateToProps = (state) => {
+   return {
+      myFavorites: state.myFavorites,
+   };
+ };
+ 
+ export default connect(mapStateToProps, mapDispatchToProps)(Card);
