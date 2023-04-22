@@ -14,6 +14,7 @@ import { useEffect } from 'react';
  function Card(props) {  
    const navigate = useNavigate()
    const {character, onClose,addCharacter,deleteCharacter,myFavorites} = props;
+   const [closeBtn, setCloseBtn] = useState(true);
    const [isFav,setIsFav]=useState(false)
   
 
@@ -38,12 +39,21 @@ import { useEffect } from 'react';
          setIsFav(true);
       }
    });
-}, [myFavorites]);
+}, [myFavorites,character.id]);
 
+useEffect(() => {
+   if (!onClose) {
+     setCloseBtn(false);
+   }
+ }, [onClose]);
 
    return (
       <div className= {style.cardContainer}>
-         <button className={style.closeButton} onClick={() => onClose(character.id)}>X</button>
+
+{closeBtn ? (
+          <button className={style.closeButton} onClick={() => onClose(character.id)}>X</button>
+        ) : null}
+         
          {
             isFav ? (
                <button onClick={()=>handleFavorite (character.id)}>❤️</button>
