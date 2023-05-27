@@ -10,10 +10,9 @@ const initialState={ // estado inicial
 const rootReducer = (state =initialState,action) =>{ 
     switch (action.type){
         case ADD_CHARACTERS:
-            const add = [...state.myFavorites,action.payload]
             return { ...state, 
-                myFavorites: [...add], 
-                allCharacters: [...add]
+                myFavorites: action.payload, 
+                allCharacters:action.payload
             }
         case DELETE_CHARACTERS:
             return { ...state, 

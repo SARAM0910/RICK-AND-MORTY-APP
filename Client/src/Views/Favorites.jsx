@@ -3,11 +3,11 @@ import {useDispatch,useSelector} from "react-redux";
 import Cards from "../components/Cards";
 import { filterCards, orderCards, reset} from "../redux/actions";
 
-export default function Favorites ({myFavorites}){
+export default function Favorites (props){ // antes recibe {myFavorites}
 
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.myFavorites);
-    
+  const favorites = useSelector(state => state.myFavorites);
+  
 
     function handleSort(e) {
         dispatch(orderCards(e.target.value));
@@ -20,6 +20,8 @@ export default function Favorites ({myFavorites}){
       function handleReset (){
         dispatch(reset())
       }
+
+     
 return(
     <>
     <div>

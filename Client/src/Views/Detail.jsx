@@ -3,18 +3,18 @@ import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
 import style from './Detail.module.css'
 
-export default function Detail (){
+export default function Detail (props){
     const {id} =useParams();
     
-    const [character,setCharacter] = useState([])
+    const [character,setCharacter] = useState({})
 
     useEffect(() => {
         // fetch(`https://rickandmortyapi.com/api/character/${id}`)
         fetch(`http://localhost:3001/rickandmorty/character/${id}`)
           .then((response) => response.json())
-          .then((char) => {
-            if (char.name) {
-              setCharacter(char);
+          .then((data) => {
+            if (data.name) {
+              setCharacter(data);
             } else {
               window.alert("No hay personajes con ese ID");
             }
@@ -22,7 +22,6 @@ export default function Detail (){
           .catch((err) => {
             window.alert("No hay personajes con ese ID");
           });
-        return setCharacter({});
       }, [id]);
 
     return(

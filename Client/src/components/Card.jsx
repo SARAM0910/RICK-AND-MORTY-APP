@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
  function Card(props) {  
    const navigate = useNavigate()
-   const {character, onClose,addCharacter,deleteCharacter,myFavorites} = props;
+   const {character, myFavorites, onClose} = props;
    const [closeBtn, setCloseBtn] = useState(true);
    const [isFav,setIsFav]=useState(false)
   
@@ -22,24 +22,27 @@ import { useEffect } from 'react';
       navigate (`/Detail/${character.id}`)
    }
 
-  function handleFavorite (data){
+  function handleFavorite (){
    if (isFav){
-      deleteCharacter(data)
       setIsFav(false)
-   }else{
-      addCharacter(data)
-      setIsFav (true)
-   }
-   
-  }
-
-  useEffect(() => {
-   myFavorites.forEach((fav) => {
-      if (fav.id === character.id) {
-         setIsFav(true);
+      if (character && character.id) {
+         props.deleteCharacter(character.id)
       }
-   });
-}, [myFavorites,character.id]);
+   }else{
+      setIsFav (true)
+      props.addCharacter(character)
+   }
+  }
+  
+   useEffect(() => {
+     if (myFavorites) {
+       myFavorites.forEach((fav) => {
+         if (fav.id === character.id) {
+           setIsFav(true);
+         }
+       });
+     }
+   }, [myFavorites, character.id]);
 
 useEffect(() => {
    if (!onClose) {
@@ -56,9 +59,9 @@ useEffect(() => {
          
          {
             isFav ? (
-               <button onClick={()=>handleFavorite (character.id)}>❤️</button>
+               <button onClick={handleFavorite}>❤️</button>
                  ) : (
-                 <button onClick={()=>handleFavorite (character)}>🤍</button> )
+                 <button onClick={handleFavorite}>🤍</button> )
          } 
          <h2 className={style.cardName}>Name: {character.name} </h2>
          <div className={style.imageContainer}>
@@ -78,7 +81,7 @@ const mapDispatchToProps = (dispatch) => {
    return {
      addCharacter: (character) => dispatch(addCharacter(character)),
  
-     deleteCharacter: (id) => dispatch(deleteCharacter(id)),
+     deleteCharacter: (characterId) => dispatch(deleteCharacter(characterId)),
    };
  };
  
@@ -87,5 +90,7 @@ const mapDispatchToProps = (dispatch) => {
       myFavorites: state.myFavorites,
    };
  };
+
+
  
  export default connect(mapStateToProps, mapDispatchToProps)(Card);

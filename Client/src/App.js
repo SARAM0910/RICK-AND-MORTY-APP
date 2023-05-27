@@ -20,18 +20,38 @@ function App () {
   // const password = 'ejemplo123'
   const navigate = useNavigate();
 
-  function login(userData) {
+
+  const login = async (userData)=>{
 
     const {email, password} = userData;
-
     const URL = "http://localhost:3001/rickandmorty/login/";
-    axios(`${URL}?email=${email}&password=${password}`)
-    .then(({ data }) => {
-       const { access } = data;
-       setAccess(data);
-       access && navigate('/home');
-    });
- }
+    
+    try {
+      let response= await axios.get(`${URL}?email=${email}&password=${password}`)
+      const { access } = response.data;
+      setAccess(access);
+      access && navigate('/home')
+
+    } catch (error) {
+      
+      window.alert('Ha ocurrido un error. Por favor, intenta nuevamente más tarde.')
+
+    }
+
+  }
+
+//   function login(userData) {
+
+//     const {email, password} = userData;
+
+//     const URL = "http://localhost:3001/rickandmorty/login/";
+//     axios(`${URL}?email=${email}&password=${password}`)
+//     .then(({ data }) => {
+//        const { access } = data;
+//        setAccess(data);
+//        access && navigate('/home');
+//     });
+//  }
 
   // login front 
 //   function login(userData) {
